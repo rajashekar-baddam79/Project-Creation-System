@@ -42,12 +42,19 @@ The system leverages a relational structure between the built-in Django User mod
 
 Project Model
 Field	             Type	                Description
+
 id	                 BigAutoField	        Primary Key.
+
 title	             CharField	            The name of the project.
+
 description	         TextField	            Detailed project notes.
+
 status	             CharField	            Choices: active or inactive.
+
 duration_months	     Integer	            Duration in months.
+
 creator	             ForeignKey	            Link to auth.User (the project owner).
+
 created_at	         DateTime	            Automatically set on creation.
 
 
@@ -56,14 +63,20 @@ All project management endpoints require an Authorization Header: Bearer <access
 
 Authentication
 POST /api/register/ - Register a new user account.
+
 POST /api/token/ - Login to receive JWT Access & Refresh tokens.
+
 POST /api/token/refresh/ - Refresh an expired access token.
 
 Project Management
 GET /api/projects/ - List all projects (Sorted: Latest first).
+
 POST /api/projects/ - Create a new project (Creator is auto-assigned).
+
 GET /api/projects/<id>/ - Retrieve specific project details.
+
 PUT /api/projects/<id>/ - Update a project (Creator only).
+
 DELETE /api/projects/<id>/ - Delete a project (Creator only).
 
 🔐 Permission & Validation Logic
